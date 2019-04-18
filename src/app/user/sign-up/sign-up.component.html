@@ -1,0 +1,51 @@
+
+      <form  class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+        <div class="row">
+          <div class="input-field col s6">
+            <input   type="text" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
+            <label >UserName</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="password" #Password="ngModel" name="Password" [(ngModel)]="user.Password" required>
+            <label>Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col12">
+            <input type="text" #Email="ngModel" name="Email" [(ngModel)]="user.Email">
+            <label>Email</label>
+          </div>
+          <!-- <div class="input-field col s6">
+              <label >State</label>
+              <select  id="state" name="state" [(ngModel)]="states">
+                <option  *ngFor="let state of states">{{state.Name}}</option>
+              </select>
+            </div> -->
+           
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName">
+            <label>FirstName</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" #LastName="ngModel" name="LastName" [(ngModel)]="user.LastName">
+            <label>LastName</label>
+          </div>
+        </div>
+        <div></div>
+        <div class="row" *ngIf="roles">
+          <ul>
+            <li *ngFor="let item of roles; let i = index">
+              <input [type]="checkbox" [id]="'roles-'+i" value="{{item.Id}}" [checked]="item.selected">
+              <label [for]="'roles-'+i">{{item.Name}}</label>
+            </li>
+          </ul>
+        </div>
+        <div class="row"> 
+            <div class="input-field col s12"> 
+               <button [disabled]="!userRegistrationForm.valid" type="submit" class="btn-large btn-submit">Submit</button>
+            </div>
+        </div>
+      </form>
+    
